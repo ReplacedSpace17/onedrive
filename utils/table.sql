@@ -1,0 +1,9 @@
+CREATE TABLE datos (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(500),
+  password VARCHAR(500),
+  fecha DATETIME,
+  lat VARCHAR(500),
+  lon VARCHAR(500),
+  ip VARCHAR(500)
+);

